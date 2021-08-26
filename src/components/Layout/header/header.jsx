@@ -13,26 +13,31 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import {Link as Scroll} from 'react-scroll';
-import {Link} from "react-router-dom";
 
 const Header = () => {
 
     const [scrollNav, setScrollNav] = useState(false)
-    const changeNav = () => {
-        if (window.scrollY >= 80) {
+
+    useEffect(() => {
+    function watchScroll() {
+        window.addEventListener("scroll", onScroll);
+      }
+      watchScroll();
+      return () => {
+        window.removeEventListener("scroll", onScroll);
+      };
+    })
+
+    function onScroll() {
+        if (window.scrollY >= 20) {
             setScrollNav(true)
         } else {
             setScrollNav(false)
         }
     }
 
-    useEffect(() => {
-        window.addEventListener('scroll', changeNav)
-    }, [])
-
-
     return (
-        <HeaderNav scrollNav={{scrollNav}}>
+        <HeaderNav scrollNav={scrollNav}>
             <HeaderContainer>
                 <HeaderMenuLogo>
                     <Logo> Haseeb</Logo>

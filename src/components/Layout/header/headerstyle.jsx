@@ -10,8 +10,7 @@ export const HeaderNav = styled.nav`
   z-index: 10;
   position: sticky;
   top: 0;
-  background: ${({scrollNav}) => (scrollNav ? '#000' : 'transparent')};
-  //background: white;
+  background:${({scrollNav}) => (scrollNav ? `#000` : `black`)}; 
 
   @media screen and (max-width: 960px) {
     transition: 0.8s all ease;
